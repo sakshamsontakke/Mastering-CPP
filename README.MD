@@ -223,4 +223,10 @@ If you find this repository useful:
 
 ---
 
+## 👨‍💻 Author
+
+Created and maintained by **Sakkkky**
+
+GitHub: https://github.com/Sakkkky
+
 ## Happy Coding! 🚀
