@@ -567,6 +567,215 @@ flowchart TD
     style E fill:#f8d7da,stroke:#721c24,color:#000
 ```
 
+
+# Understanding `Type&` in C++
+
+This is the real question. Forget classes for a moment.
+
+`Type&` simply means:
+
+> **Reference to a Type object.**
+
+## Example 1: `int&`
+
+```cpp
+int x = 10;
+int& y = x;
+```
+
+Here:
+
+* `x` is an `int`.
+* `y` is a reference to `x`.
+
+Memory:
+
+```text
+x
++----+
+| 10 |
++----+
+ ↑
+ y
+```
+
+Changing `y` changes `x`:
+
+```cpp
+y = 20;
+
+cout << x; // 20
+```
+
+`y` is just another name for `x`.
+
+---
+
+## Example 2: Functions Returning References
+
+```cpp
+int x = 10;
+
+int& fun() {
+    return x;
+}
+```
+
+Now:
+
+```cpp
+fun() = 50;
+```
+
+is equivalent to:
+
+```cpp
+x = 50;
+```
+
+because `fun()` returns a reference to `x`.
+
+---
+
+## Example 3: `test&`
+
+Suppose:
+
+```cpp
+class test {
+    int a;
+};
+```
+
+Then:
+
+```cpp
+test obj;
+```
+
+When you write:
+
+```cpp
+test& ref = obj;
+```
+
+`ref` becomes another name for `obj`.
+
+Memory:
+
+```text
+obj
++-----+
+| a=? |
++-----+
+ ↑
+ref
+```
+
+So:
+
+```cpp
+ref.setData(5);
+```
+
+is exactly the same as:
+
+```cpp
+obj.setData(5);
+```
+
+---
+
+# Now Your Code
+
+```cpp
+test& setData(int a) {
+    this->a = a;
+    return *this;
+}
+```
+
+Suppose:
+
+```cpp
+test obj;
+```
+
+Inside:
+
+```cpp
+this == &obj
+```
+
+Therefore:
+
+```cpp
+*this == obj
+```
+
+So:
+
+```cpp
+return *this;
+```
+
+returns a reference to `obj`.
+
+Hence:
+
+```cpp
+obj.setData(5)
+```
+
+returns `obj` itself.
+
+Therefore:
+
+```cpp
+obj.setData(5).getData();
+```
+
+becomes:
+
+```cpp
+obj.getData();
+```
+
+---
+
+# General Rule
+
+```cpp
+Type x;      // object of Type
+Type& y = x; // y is another name for x
+```
+
+`Type&` means:
+
+> **Reference to a Type object.**
+
+Some examples:
+
+```cpp
+int&      // reference to int
+float&    // reference to float
+string&   // reference to string
+test&     // reference to a test object
+```
+
+> **The `&` does not mean address here. It means reference (alias).**
+
+Think of:
+
+```cpp
+Type& y = x;
+```
+
+as:
+
+> **"y is another name for an existing object of Type."**
+
+
 ### Why Use `Type&` as Return Type?
 
 ```cpp
