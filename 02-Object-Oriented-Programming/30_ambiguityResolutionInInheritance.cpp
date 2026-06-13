@@ -2,7 +2,11 @@
 using namespace std; 
 
 // Ambiguity Resolution in Inheritance in C++
-/*
+/*  
+    # Defnation: 
+    ---->Ambiguity is a situation in which the compiler cannot determine which member,
+         function, or base class to use because multiple equally valid options exist.
+
     1.imagine to classes with same function "greet()" , both prints diffrent 
       output when we make another derived class from them using multiple inheritance
       and try to use greet function from derived class , compiler confuses and throw
