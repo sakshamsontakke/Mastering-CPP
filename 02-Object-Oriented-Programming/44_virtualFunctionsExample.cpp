@@ -3,6 +3,14 @@
 using namespace std; 
 
 // Virtual Functions Example in C++ 
+/*
+    # Rules for virtual functions
+    1. They cannot be static
+    2. They are accessed by object pointers
+    3. Virtual functions can be a friend of another class
+    4. A virtual function in the base class might not be used.
+    5. If a virtual function is defined in a base class, there is no necessity of redefining it in the derived class   
+*/
 
 //creating a base class with virtual function 
 class youtube{
@@ -15,6 +23,7 @@ class youtube{
             this->rating = rating;
         }
         virtual void display(){
+            cout<<"virtual function from base class is invoked!!"<<endl;
         }
 };
 
@@ -26,11 +35,12 @@ class youtubeVideo : public youtube{
         youtubeVideo(string title , float rating , int videoLength) : youtube(title , rating){
             this->videoLength = videoLength;
         }
-        void display(void){
-            cout<<"the title of normal video is : "<<title<<endl;
-            cout<<"the rating of the normal video is : "<<rating<<" out of 10 "<<endl;
-            cout<<"the length of the video is : "<<videoLength<<" min"<<endl;
-        }
+        //5. If a virtual function is defined in a base class, there is no necessity of redefining it in the derived class   
+        // void display(void){
+        //     cout<<"the title of normal video is : "<<title<<endl;
+        //     cout<<"the rating of the normal video is : "<<rating<<" out of 10 "<<endl;
+        //     cout<<"the length of the video is : "<<videoLength<<" min"<<endl;
+        // }
 };
 
 
