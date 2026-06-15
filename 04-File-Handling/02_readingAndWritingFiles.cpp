@@ -8,6 +8,7 @@ using namespace std;
   1. fstreambase
   2. ifstream --> derived from fstreambase (uses in() --> 'in' means retriveing data from this file   )
   3. ofstream --> derived from fstreambase (uses out() --> 'out' mean setting data inside a file)
+  4. we can name the object anything , in() or hin() or ourInput() it's on us. 
 
   # In order to work with files in C++, you will have to open it. Primarily, there are 2 ways to open a file:
   1. Using the constructor
@@ -42,6 +43,11 @@ int main(){
     cout<<para2;
     getline(in , para2);
     cout<<para2;
+
+
+    // disconnecting the files 
+    out.close();
+    in.close();
     
 
     return 0;
