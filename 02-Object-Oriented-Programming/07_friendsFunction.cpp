@@ -28,8 +28,7 @@ public:
 
     // Below line means that non member - sumComplex funtion is allowed to do anything with my private parts (members)
     friend Complex sumComplex(Complex obj1, Complex obj2); // sumComplex is not a member of Complex, but because it is declared as a friend,
-                                                                // it can access private members of Complex objects.
-    friend Complex sumComplex(Complex obj1, Complex obj2);
+                                                                // it can access private members of Complex objects.;
     void printNumber()
     {
         cout << "Your number is " << a << " + " << b << "i" << endl;
