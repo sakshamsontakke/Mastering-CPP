@@ -7,7 +7,7 @@ using namespace std;
 /*
     1. syntax: vector<data_type> vector_name;
 */
-// creating a function to get user inout to set vec1 values
+// creating a function to get user input to set vec1 values
 
 void display(vector<int> &v){
     for (int i = 0; i < v.size(); i++)
